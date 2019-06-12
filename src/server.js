@@ -15,10 +15,6 @@ mongoose.connection
   .once('open', () => console.log('connected to databse'))
   .on('error', error => console.warn('error: ' + error));
 
-app.use((req, res, next) => {
-  req.io = io;
-
-  next();
-});
-
 server.listen(PORT, () => console.log(`listening on port ${PORT}`));
+
+module.exports = io;

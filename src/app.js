@@ -5,8 +5,15 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
 const v1 = require('./routes/v1');
+const io = require('./server');
 
 const app = express();
+
+app.use((req, res, next) => {
+  req.io = io;
+
+  next();
+});
 
 app.use(cors);
 
