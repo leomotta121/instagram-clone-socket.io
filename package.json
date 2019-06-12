@@ -1,0 +1,19 @@
+{
+  "name": "instagram-clone-socket.io",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/leomotta121/instagram-clone-socket.io.git",
+  "author": "Leonardo Motta <leo@domboscoatacado.com.br>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.5.14"
+  },
+  "devDependencies": {
+    "dotenv": "^8.0.0",
+    "nodemon": "^1.19.1"
+  }
+}
