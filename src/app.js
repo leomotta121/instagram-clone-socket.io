@@ -1,9 +1,12 @@
 const ApiError = require('./services/apiError');
 
 const express = require('express');
+const path = require('path');
 const v1 = require('./routes/v1');
 
 const app = express();
+
+app.use('/files', express.static(path.resolve(__dirname, '..', 'uploads', 'resized')));
 
 app.use('/v1', v1);
 

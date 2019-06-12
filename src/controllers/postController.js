@@ -15,10 +15,13 @@ exports.store = async (req, res, next) => {
   const { author, place, description, hashtags } = req.body;
   const { filename: image } = req.file;
 
+  const [name] = image.split('.');
+  const fileName = `${name}.jpg`;
+
   await sharp(req.file.path)
     .resize(500)
     .jpeg({ quality: 70 })
-    .toFile(path.resolve(req.file.destination, 'resized', image));
+    .toFile(path.resolve(req.file.destination, 'resized', fileName));
 
   fs.unlinkSync(req.file.path);
 
@@ -27,7 +30,7 @@ exports.store = async (req, res, next) => {
     place,
     description,
     hashtags,
-    image
+    image: fileName
   });
 
   res.json(post);
