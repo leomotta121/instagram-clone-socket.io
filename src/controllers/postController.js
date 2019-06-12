@@ -33,6 +33,8 @@ exports.store = async (req, res, next) => {
     image: fileName
   });
 
+  req.io.emit('post', post);
+
   res.json(post);
 };
 
@@ -42,6 +44,8 @@ exports.like = async (req, res, next) => {
   post.likes += 1;
 
   await post.save();
+
+  req.io.emit('like', post);
 
   return res.json(post);
 };
