@@ -18,7 +18,7 @@ exports.store = async (req, res, next) => {
   const [name] = image.split('.');
   const fileName = `${name}.jpg`;
 
-  await sharp(req.file.path)
+  await sharp(req.file.path, {failOnError: false})
     .resize(500)
     .jpeg({ quality: 70 })
     .toFile(path.resolve(req.file.destination, 'resized', fileName));
